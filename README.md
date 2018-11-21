@@ -1,6 +1,6 @@
 # Demo for React Window Bubbling
 
-<img src="src/demo.gif" alt="Demo for React Window Bubbling" />
+<kbd><img src="src/demo.gif" alt="Demo for React Window Bubbling" /></kbd>
 
 Instead of using `postMessage` to communicate between parent & child windows, we can use React Portals & the `window.open()` API.
 
@@ -29,15 +29,7 @@ const App = () => {
   return (
     <div className="App">
       {count}
-      {/* <button
-        onClick={() => {
-          // TODO: If a window is already open, use that context
 
-          console.log("hello");
-        }}
-      >
-        Open New Window
-      </button> */}
       {ReactDOM.createPortal(
         <button
           onClick={() => {
