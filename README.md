@@ -1,10 +1,10 @@
 # Demo for React Window Bubbling
 
-<kbd><img src="src/demo.gif" alt="Demo for React Window Bubbling" /></kbd>
+<p align="center"><kbd><img src="src/demo.gif" alt="Demo for React Window Bubbling" /></kbd></p>
 
 Instead of using `postMessage` to communicate between parent & child windows, we can use React Portals & the `window.open()` API.
 
-Inspired by [this tweet](https://twitter.com/ryanflorence/status/1064612600317534208) by @ryanflorence.
+Inspired by [this tweet](https://twitter.com/ryanflorence/status/1064612600317534208) by @ryanflorence, and [this code sample](https://twitter.com/shovnr/status/1064623209545224192) by @shovnr.
 
 ## The Code
 
