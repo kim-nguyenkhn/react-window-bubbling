@@ -1,62 +1,43 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
-class App extends Component {
-  state = {
-    count: 0,
-    windowObjectReference: null,
-    externalBody: null
-  };
+const newWindow = window.open(
+  "",
+  "",
+  "left=100,top=100,width=200,height=200,centerscreen=yes"
+);
+const externalBody = newWindow.document.querySelector("body");
 
-  // Increment the count
-  addCount = () => {
-    const newCount = this.state.count + 1;
-    this.setState({
-      count: newCount
-    });
-  };
+const App = () => {
+  const [count, setCount] = useState(0);
 
-  openPopUp = () => {
-    if (
-      this.state.windowObjectReference === null ||
-      this.state.windowObjectReference.closed
-    ) {
-      // window.open(): https://developer.mozilla.org/en-US/docs/Web/API/Window/open
-      const windowObjectReference = window.open(
-        // Empty to load a blank page
-        "",
+  return (
+    <div className="App">
+      {count}
+      {/* <button
+        onClick={() => {
+          // TODO: If a window is already open, use that context
 
-        // Empty so we can create a new window each time
-        "",
-
-        // List of window variables
-        "width=500,height=500,menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes"
-      );
-
-      this.setState({
-        windowObjectReference
-      });
-    } else {
-      this.windowObjectReference.focus();
-    }
-  };
-
-  render() {
-    return (
-      <div className="App">
-        <div className="count">{this.state.count}</div>
-        <button onClick={() => this.openPopUp()}>Open New Window</button>
-        {this.state.windowObjectReference &&
-          ReactDOM.createPortal(
-            <button onClick={() => this.addCount()}>+1</button>,
-            this.state.externalBody
-          )}
-      </div>
-    );
-  }
-}
+          console.log("hello");
+        }}
+      >
+        Open New Window
+      </button> */}
+      {ReactDOM.createPortal(
+        <button
+          onClick={() => {
+            setCount(count + 1);
+          }}
+        >
+          +1
+        </button>,
+        externalBody
+      )}
+    </div>
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
